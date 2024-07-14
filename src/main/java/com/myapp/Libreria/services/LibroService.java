@@ -88,7 +88,7 @@ public class LibroService {
 
     }
 
-    public void validar(Long isbn, String titulo, Integer ejemplares, Integer autorId, Integer editorialId)
+    private void validar(Long isbn, String titulo, Integer ejemplares, Integer autorId, Integer editorialId)
             throws MyException {
 
         if (isbn == null) {

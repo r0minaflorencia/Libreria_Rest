@@ -48,7 +48,7 @@ public class EditorialService {
 
     }
 
-    public void validar(Integer id, String nombre) throws MyException {
+    private void validar(Integer id, String nombre) throws MyException {
         if (id == null) {
             throw new MyException("El ID no puede ser nulo.");
         }

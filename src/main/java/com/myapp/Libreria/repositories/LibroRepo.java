@@ -12,10 +12,10 @@ import com.myapp.Libreria.entities.Libro;
 @Repository
 public interface LibroRepo extends JpaRepository<Libro, Long>{
     
-    @Query("SELECT l FROM Libro WHERE l.titulo = :titulo")
+    @Query("SELECT l FROM Libro l WHERE l.titulo = :titulo")
     public Libro buscarPorTitulo(@Param("titulo") String titulo);
 
-    @Query("SELECT l FROM Libro WHERE l.autor.nombre = :nombre")
+    @Query("SELECT l FROM Libro l WHERE l.autor.nombre = :nombre")
     public List<Libro> buscarPorAutor(@Param("nombre") String nombre);
 
 }

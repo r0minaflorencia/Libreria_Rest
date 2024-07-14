@@ -10,7 +10,7 @@ import com.myapp.Libreria.entities.Autor;
 @Repository
 public interface AutorRepo extends JpaRepository<Autor, Integer> {
 
-    @Query("SELECT a FROM Autor WHERE a.nombre = :nombre")
+    @Query("SELECT a FROM Autor a WHERE a.nombre = :nombre")
     public Autor buscarPorNombre(@Param("nombre") String nombre);
     
 }
