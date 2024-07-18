@@ -1,30 +1,32 @@
-package com.myapp.Libreria.entities;
+package com.libreria.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Autor {
+public class Editorial {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private Long id;
+
     private String nombre;
 
-    public Autor() {
+    public Editorial() {
     }
 
-    public Autor(Integer id, String nombre) {
+    public Editorial(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,9 +40,7 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor [id=" + id + ", nombre=" + nombre + "]";
+        return "Editorial {" + "ID: " + id + ", nombre: " + nombre + '}';
     }
-
-
 
 }

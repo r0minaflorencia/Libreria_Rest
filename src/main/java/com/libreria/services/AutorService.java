@@ -1,16 +1,13 @@
-package com.myapp.Libreria.services;
+package com.libreria.services;
 
+import com.libreria.entities.Autor;
+import com.libreria.exceptions.MyException;
+import com.libreria.repositories.AutorRepo;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.myapp.Libreria.entities.Autor;
-import com.myapp.Libreria.exceptions.MyException;
-import com.myapp.Libreria.repositories.AutorRepo;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class AutorService {
@@ -19,23 +16,23 @@ public class AutorService {
     private AutorRepo autorRepo;
 
     @Transactional
-    public void crear(String nombre) {
-
+    public void crear(String nombre) throws MyException {
+        
+        validar(nombre);
+        
         Autor autor = new Autor();
-
         autor.setNombre(nombre);
-
         autorRepo.save(autor);
     }
 
-    public List<Autor> listar() {
+    public List<Autor> listarTodo() {
         return autorRepo.findAll();
     }
 
     @Transactional
-    public void modificar(Integer id, String nombre) throws MyException {
+    public void modificar(Long id, String nombre) throws MyException {
 
-        validar(id, nombre);
+        validar(nombre);
 
         Optional<Autor> request = autorRepo.findById(id);
 
@@ -46,14 +43,10 @@ public class AutorService {
         }
     }
 
-    private void validar(Integer id, String nombre) throws MyException {
-
-        if (id == null) {
-            throw new MyException("El ID no puede ser nulo.");
-        }
+    private void validar(String nombre) throws MyException {
 
         if (nombre.isEmpty() || nombre == null) {
-            throw new MyException("El nombre no puede ser nulo.");
+            throw new MyException("El nombre no puede estar vacío.");
         }
     }
 

@@ -8,8 +8,8 @@
 		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.myapp</groupId>
-	<artifactId>Libreria</artifactId>
+	<groupId>com.libreria</groupId>
+	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Libreria</name>
 	<description>Demo project for Spring Boot</description>

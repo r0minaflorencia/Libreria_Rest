@@ -1,16 +1,13 @@
-package com.myapp.Libreria.services;
+package com.libreria.services;
 
+import com.libreria.entities.Editorial;
+import com.libreria.exceptions.MyException;
+import com.libreria.repositories.EditorialRepo;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.myapp.Libreria.entities.Editorial;
-import com.myapp.Libreria.exceptions.MyException;
-import com.myapp.Libreria.repositories.EditorialRepo;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class EditorialService {
@@ -20,42 +17,38 @@ public class EditorialService {
 
     @Transactional
     public void crear(String nombre) throws MyException {
+        
+        validar(nombre);
 
         Editorial editorial = new Editorial();
-
         editorial.setNombre(nombre);
-
         editorialRepo.save(editorial);
-
     }
 
-    public List<Editorial> listar() {
+    public List<Editorial> listarTodo() {
         return editorialRepo.findAll();
     }
 
     @Transactional
-    public void modificar(Integer id, String nombre) throws MyException {
+    public void modificar(Long id, String nombre) throws MyException {
 
-        validar(id, nombre);
-
+        validar(nombre);
+        
         Optional<Editorial> request = editorialRepo.findById(id);
 
         if (request.isPresent()) {
+
             Editorial editorial = request.get();
             editorial.setNombre(nombre);
             editorialRepo.save(editorial);
         }
-
     }
 
-    private void validar(Integer id, String nombre) throws MyException {
-        if (id == null) {
-            throw new MyException("El ID no puede ser nulo.");
-        }
+    private void validar(String nombre) throws MyException {
+
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MyException("El nombre no puede ser nulo.");
         }
     }
-
 }
