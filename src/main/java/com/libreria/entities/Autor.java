@@ -11,7 +11,8 @@ import java.util.List;
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Long id;
 
     private String nombre;
