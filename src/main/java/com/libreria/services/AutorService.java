@@ -17,9 +17,9 @@ public class AutorService {
 
     @Transactional
     public void crear(String nombre) throws MyException {
-        
+
         validar(nombre);
-        
+
         Autor autor = new Autor();
         autor.setNombre(nombre);
         autorRepo.save(autor);
@@ -41,6 +41,10 @@ public class AutorService {
             autor.setNombre(nombre);
             autorRepo.save(autor);
         }
+    }
+
+    public Autor getOne(Long id) {
+        return autorRepo.getReferenceById(id);
     }
 
     private void validar(String nombre) throws MyException {

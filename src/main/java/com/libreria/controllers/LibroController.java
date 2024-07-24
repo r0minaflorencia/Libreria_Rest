@@ -2,6 +2,7 @@ package com.libreria.controllers;
 
 import com.libreria.entities.Autor;
 import com.libreria.entities.Editorial;
+import com.libreria.entities.Libro;
 import com.libreria.exceptions.MyException;
 import com.libreria.services.AutorService;
 import com.libreria.services.EditorialService;
@@ -87,6 +88,15 @@ public class LibroController {
 
         // si todo sale bien recargamos el index.
         return "index.html";
+    }
+
+
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo) {
+        List<Libro> libros = service.listarTodo();
+        modelo.addAttribute("libros", libros);
+
+        return "libro_list";
     }
 
 }
