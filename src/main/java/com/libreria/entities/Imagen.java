@@ -1,30 +1,29 @@
 package com.libreria.entities;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.List;
+import jakarta.persistence.Lob;
 
 @Entity
-public class Autor {
+public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String mime;
+
     private String nombre;
 
-    @OneToMany
-    private List<Libro> libros;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] content;
 
-    public Autor() {
-    }
-
-    public Autor(Long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    public Imagen() {
     }
 
     public Long getId() {
@@ -35,6 +34,14 @@ public class Autor {
         this.id = id;
     }
 
+    public String getMime() {
+        return mime;
+    }
+
+    public void setMime(String mime) {
+        this.mime = mime;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -43,17 +50,12 @@ public class Autor {
         this.nombre = nombre;
     }
 
-    public List<Libro> getLibros() {
-        return libros;
+    public byte[] getContent() {
+        return content;
     }
 
-    public void setLibro(List<Libro> libros) {
-        this.libros = libros;
-    }
-
-    @Override
-    public String toString() {
-        return "Autor {" + "ID: " + id + ", nombre: " + nombre + '}';
+    public void setContent(byte[] content) {
+        this.content = content;
     }
 
 }
