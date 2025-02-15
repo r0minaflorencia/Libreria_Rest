@@ -25,7 +25,7 @@ public class AutorController {
     @GetMapping("/registrar")
     public String registrar() {
 
-        return "autor_form.html";
+        return "autor/autor_form.html";
     }
 
     @PostMapping("/registro")
@@ -36,7 +36,7 @@ public class AutorController {
             model.put("exito", "Se registró con exito");
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "autor_form.html";
+            return "autor/autor_form.html";
         }
         return "index.html";
 
@@ -49,14 +49,14 @@ public class AutorController {
 
         modelo.addAttribute("autores", autores);
 
-        return "autor_list.html";
+        return "autor/autor_list.html";
     }
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("autor", service.getOne(id));
 
-        return "autor_modificar.html";
+        return "autor/autor_modificar.html";
     }
 
     @PostMapping("/modificar/{id}")
@@ -67,7 +67,7 @@ public class AutorController {
             return "redirect:../lista";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
-            return "autor_modificar.html";
+            return "autor/autor_modificar.html";
         }
 
     }

@@ -90,6 +90,10 @@ public class LibroService {
         }
     }
 
+    public Libro getOne(Long isbn) {
+        return libroRepo.getReferenceById(isbn);
+    }
+
     // método para validar datos:
     private void validar(Long isbn, String titulo, Integer ejemplares,
             Long idAutor, Long idEditorial) throws MyException {

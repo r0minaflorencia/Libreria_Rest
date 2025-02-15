@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,13 +35,10 @@ public class LibroController {
         List<Autor> autores = autorService.listarTodo();
         List<Editorial> editoriales = editorialService.listarTodo();
 
-        /**
-         * Agrego atributos
-         */
         model.addAttribute("autores", autores);
         model.addAttribute("editoriales", editoriales);
 
-        return "libro_form.html";
+        return "libro/libro_form.html";
     }
 
     /**
@@ -83,7 +81,7 @@ public class LibroController {
 
             model.put("error", ex.getMessage());
 
-            return "libro_form.html"; // si hay algun error volver a cargar el formulario.
+            return "libro/libro_form.html"; // si hay algun error volver a cargar el formulario.
         }
 
         // si todo sale bien recargamos el index.
@@ -96,7 +94,27 @@ public class LibroController {
         List<Libro> libros = service.listarTodo();
         modelo.addAttribute("libros", libros);
 
-        return "libro_list";
+        return "libro/libro_list.html";
+    }
+
+     @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long isbn, ModelMap modelo) {
+        modelo.put("libro", service.getOne(isbn));
+
+        return "libro/libro_modificar.html";
+    }
+
+    @PostMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial, ModelMap modelo) {
+        try {
+            service.modificar(isbn, titulo, ejemplares, idAutor, idEditorial);
+
+            return "redirect:../lista";
+        } catch (MyException ex) {
+            modelo.put("error", ex.getMessage());
+            return "libro/libro_modificar.html";
+        }
+
     }
 
 }

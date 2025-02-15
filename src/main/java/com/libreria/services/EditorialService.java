@@ -44,6 +44,10 @@ public class EditorialService {
         }
     }
 
+    public Editorial getOne(Long id) {
+        return editorialRepo.getReferenceById(id);
+    }
+
     private void validar(String nombre) throws MyException {
 
 
