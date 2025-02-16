@@ -20,8 +20,9 @@
 }
 
 .main{
-    background-image: url(../img/FondoZoom.jpg);
-    background-size: cover;
+    /* Foto de Min An: https://www.pexels.com/es-es/foto/pila-de-libros-novedosos-surtidos-694740/
+    background-image: url(../img/index_background.jpg);
+    background-size: cover; */
     height: 400;
     display: flex;
     align-items: center;

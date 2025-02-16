@@ -24,6 +24,7 @@
 }
 
 .tituloBiblioteca {
+    color: #fff;
     width: 80%;
     text-align: center;
     font-size: 40px;
@@ -32,15 +33,17 @@
 }
 
 .header {
-    background-image: url(../img/FondoZoom_2.jpg);
-    background-size: cover;
+    /* Foto de Min An: https://www.pexels.com/es-es/foto/pila-de-libros-novedosos-surtidos-694740/ */
+    background-image: url(../img/index_background.jpg);
+    background-size: cover; 
     height: 550px;
     display: flex;
     justify-content: end;
 }
 
 .contenedorLibros {
-    margin-top: 80px;
+    color: #fff;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;

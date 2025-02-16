@@ -11,7 +11,7 @@
         <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+                    <img class="logo" src="/img/Egg.png" alt="Img logo delta">
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,7 @@
                         </ul>
                     </li>
 
+                    <!-- TODO 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Perfil
@@ -58,6 +59,8 @@
                             <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
                         </ul>
                     </li>
+                    -->
+
                 </ul>
             </div>
         </nav>
@@ -65,7 +68,7 @@
         <header class="header">
             <section class="contenedorMain">
                 <div class="tituloBiblioteca">
-                    <a class="navbar-brand" href="#">BIBLIOTECA EGG</a>
+                    <a class="navbar-brand" href="#">Delta libros</a>
                 </div>
                 <div class="container contenedorLibros">
                     <p class="tituloLibros" th:if="${session.usuariosession != null}" th:text=" 'Hola de vuelta '+ ${session.usuariosession.nombre} "></p>
