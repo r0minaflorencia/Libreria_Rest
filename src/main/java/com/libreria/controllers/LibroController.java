@@ -73,9 +73,6 @@ public class LibroController {
             List<Autor> autores = autorService.listarTodo();
             List<Editorial> editoriales = editorialService.listarTodo();
 
-            /**
-             * Agrego atributos
-             */
             model.addAttribute("autores", autores);
             model.addAttribute("editoriales", editoriales);
 
