@@ -79,7 +79,8 @@
     <div class="container-fluid m-5 contenedor">
 
         <form class="formulario" th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST">
-            <input hidden th:value="${isbn}" name="isbn">
+           
+            <input hidden th:value="${libro.isbn}" name="isbn">
 
             <div class="form-group my-3">
                 <label class="mb-2">Modificar Libro</label>
@@ -102,7 +103,7 @@
                 <select name="idEditorial">
                     <option>Seleccionar Editorial</option>
                     <option th:each="editorial : ${editoriales}" th:value="${editorial.id}"
-                        th:text="${editorial.nombre}" />
+                        th:text="${editorial.nombre}" >
                 </select>
             </div>
             <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
@@ -123,7 +124,7 @@
         <section class=" text-center container">
             <div class="row mt-3">
                 <div class="divVolver">
-                    <a th:href="@{/index}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                    <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
                 </div>
             </div>
         </section>

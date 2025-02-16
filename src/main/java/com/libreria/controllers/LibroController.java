@@ -97,14 +97,21 @@ public class LibroController {
         return "libro/libro_list.html";
     }
 
-     @GetMapping("/modificar/{id}")
+    @GetMapping("/modificar/{isbn}")
     public String modificar(@PathVariable Long isbn, ModelMap modelo) {
         modelo.put("libro", service.getOne(isbn));
+
+        List<Autor> autores = autorService.listarTodo();
+        List<Editorial> editoriales = editorialService.listarTodo();
+
+        modelo.addAttribute("autores", autores);
+        modelo.addAttribute("editoriales", editoriales);
+
 
         return "libro/libro_modificar.html";
     }
 
-    @PostMapping("/modificar/{id}")
+    @PostMapping("/modificar/{isbn}")
     public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial, ModelMap modelo) {
         try {
             service.modificar(isbn, titulo, ejemplares, idAutor, idEditorial);
