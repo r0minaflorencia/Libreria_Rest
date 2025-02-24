@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <div class="contenedor">
+    <div class="contenedor" style="color: white;">
 
         <form class="formulario" th:action="@{/editorial/modificar/__${editorial.id}__}" method="POST">
 
@@ -86,7 +86,7 @@
 
             <div class="form-group my-3">
 
-                <label class="mb-2">Cargar Editoriales</label>
+                <label class="mb-2">Ingresa el nuevo nombre</label>
 
                 <input th:value="${editorial.nombre}" type="text" class="form-control" name="nombre">
             </div>

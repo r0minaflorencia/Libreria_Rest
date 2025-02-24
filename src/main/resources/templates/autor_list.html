@@ -98,7 +98,7 @@
                     <th scope="row" th:text="${autor.id}"></th>
                     <td th:text="${autor.nombre}"></td>
                     <td>
-                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/autor/modificar/__${autor.id}__}"><i
+                        <a th:href="@{/autor/modificar/__${autor.id}__}"><i
                                 class="fas fa-feather-alt"></i> Modificar </a>
                     </td>
                 </tr>

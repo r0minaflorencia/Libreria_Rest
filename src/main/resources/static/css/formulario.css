@@ -10,10 +10,13 @@
     font-weight: 700;
 }
 
-.contenedor{
-    /* Foto de Pixabay: https://www.pexels.com/es-es/foto/libros-en-estanteria-de-madera-negra-159711/ */
-    background-image: url(../img/background_2.jpg);
-}
+/* .contenedor{
+    // Foto de Pixabay: https://www.pexels.com/es-es/foto/libros-en-estanteria-de-madera-negra-159711/ 
+    background-image: url(../img/background_2.jpg) !important;
+    color: #fff !important;
+} 
+
+*/
 
 .elementos{
     margin-right: 50px;

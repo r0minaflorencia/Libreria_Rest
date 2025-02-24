@@ -79,7 +79,7 @@
         </div>
     </nav>
     
-    <div class="contenedor">
+    <div class="contenedor" style="color: white;">
 
         <form class="formulario" th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST">
            
@@ -92,19 +92,15 @@
             </div>
 
             <div class="form-group my-3">
-                <label class="mb-2">Ejemplares</label>
+                <label class="mb-2" >Ejemplares</label>
                 <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares"
                     placeholder="Cantidad de ejemplares">
-            </div>
-            
-            <div class="form-group my-3">
-                <input type="file" class="form-control" name="archivo">
             </div>
 
             <div class="form-group my-3">
                 <select name="idAutor">
                     <option>Seleccionar Autor</option>
-                    <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}" />
+                    <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}" >
                 </select>
             </div>
 

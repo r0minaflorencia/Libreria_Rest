@@ -64,17 +64,6 @@
                         </ul>
                     </li>
 
-                    <!-- TODO
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Perfil
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                    -->
-                    
                 </ul>
             </div>
         </nav>
@@ -98,12 +87,11 @@
                 </div>
                 <div class="container contenedorLibros">
                     <p class="tituloLibros">Encontrá los libros que buscas!</p>
-
+                
+                    <a th:href="@{/libro/lista}" class="btn btn-primary my-3">Ver listado de libros</a>
+                    </p>
                 </div>
-                <div class="bg-circle-1 bg-circle"></div>
-                <div class="bg-circle-2 bg-circle"></div>
-                <div class="bg-circle-3 bg-circle"></div>
-                <div class="bg-circle-4 bg-circle"></div>
+
             </section>
         </header>
 
