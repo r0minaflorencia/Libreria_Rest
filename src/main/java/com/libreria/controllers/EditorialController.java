@@ -24,7 +24,7 @@ public class EditorialController {
 
     @GetMapping("/registrar")
     public String registrar() {
-        return "editorial/editorial_form.html";
+        return "editorial_form.html";
     }
 
     @PostMapping("/registro")
@@ -35,7 +35,7 @@ public class EditorialController {
             model.put("exito", "Se registró con exito");
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "editorial/editorial_form.html";
+            return "editorial_form.html";
         }
 
         return "index.html";
@@ -48,14 +48,14 @@ public class EditorialController {
 
         modelo.addAttribute("editoriales", editoriales);
 
-        return "editorial/editorial_list.html";
+        return "editorial_list.html";
     }
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("editorial", service.getOne(id));
 
-        return "editorial/editorial_modificar.html";
+        return "editorial_modificar.html";
     }
 
     @PostMapping("/modificar/{id}")
@@ -66,7 +66,7 @@ public class EditorialController {
             return "redirect:../lista";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
-            return "editorial/editorial_modificar.html";
+            return "editorial_modificar.html";
         }
 
     }

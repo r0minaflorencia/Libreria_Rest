@@ -6,9 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/main/resources/static/css/form.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/list.css">
 </head>
 
 <body>
@@ -77,58 +81,77 @@
             </ul>
         </div>
     </nav>
-    <div class="container-fluid m-5 contenedor">
 
-        <form class="formulario" th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
+    <div class="container m-5">
 
-            <input hidden th:value="${id}" name="id">
-
-            <div class="form-group my-3">
-
-                <label class="mb-2">Cargar Autores</label>
-
-                <input th:value="${autor.nombre}" type="text" class="form-control" name="nombre">
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
-
-        </form>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Id del Autor</th>
+                    <th scope="col">Nombre del Autor</th>
+                    <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                </tr>
+            </thead>    
+        
+            <tbody th:each="autor : ${autores}">
+                <tr>
+                    <th scope="row" th:text="${autor.id}"></th>
+                    <td th:text="${autor.nombre}"></td>
+                    <td>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/autor/modificar/__${autor.id}__}"><i
+                                class="fas fa-feather-alt"></i> Modificar </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
             <div class="card-body">
-                <h5 class="card-title">Exito 👍</h5>
+                <h5 class="card-title">Exito</h5>
                 <p class="card-text" th:text="${exito}"></p>
             </div>
         </div>
         <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
             <div class="card-body">
-                <h5 class="card-title">Error 👎</h5>
+                <h5 class="card-title">Error</h5>
                 <p class="card-text" th:text="${error}"></p>
             </div>
         </div>
-        <section class=" text-center container">
-            <div class="row mt-3">
-                <div class="divVolver">
-                    <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
+                    </p>
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer class="text-muted py-5">
         <div class="containerFooter">
             <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-            <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a
-                    href="../getting-started/introduction/">getting started guide</a>.</p>
+            <p class="mb-0"> Si querés ver el proyecto <br> Visitá el repositorio </a> en GitHub <a
+                    href="https://github.com/r0minaflorencia/Libreria_Rest" target="_blank"> Click acá </a>.</p>
             <p class="float-end mb-1">
                 <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
             </p>
         </div>
     </footer>
 
-
+    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
 

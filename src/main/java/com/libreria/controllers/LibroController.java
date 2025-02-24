@@ -38,7 +38,7 @@ public class LibroController {
         model.addAttribute("autores", autores);
         model.addAttribute("editoriales", editoriales);
 
-        return "libro/libro_form.html";
+        return "libro_form.html";
     }
 
     /**
@@ -78,7 +78,7 @@ public class LibroController {
 
             model.put("error", ex.getMessage());
 
-            return "libro/libro_form.html"; // si hay algun error volver a cargar el formulario.
+            return "libro_form.html"; // si hay algun error volver a cargar el formulario.
         }
 
         // si todo sale bien recargamos el index.
@@ -91,7 +91,7 @@ public class LibroController {
         List<Libro> libros = service.listarTodo();
         modelo.addAttribute("libros", libros);
 
-        return "libro/libro_list.html";
+        return "libro_list.html";
     }
 
     @GetMapping("/modificar/{isbn}")
@@ -104,8 +104,7 @@ public class LibroController {
         modelo.addAttribute("autores", autores);
         modelo.addAttribute("editoriales", editoriales);
 
-
-        return "libro/libro_modificar.html";
+        return "libro_modificar.html";
     }
 
     @PostMapping("/modificar/{isbn}")
@@ -116,7 +115,7 @@ public class LibroController {
             return "redirect:../lista";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
-            return "libro/libro_modificar.html";
+            return "libro_modificar.html";
         }
 
     }
