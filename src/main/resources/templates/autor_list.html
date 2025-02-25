@@ -102,7 +102,13 @@
                             <td th:text="${autor.nombre}"></td>
                             <td>
                                 <a th:href="@{/autor/modificar/__${autor.id}__}"><i class="fas fa-feather-alt"></i>
-                                    Modificar </a>
+                                    Modificar
+                                </a>
+
+                                <a th:href="@{/autor/eliminar/__${autor.id}__}" class="btn btn-danger"
+                                    onclick="return confirm('¿Estás seguro de que querés eliminar este autor?');">
+                                    Eliminar
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -120,8 +126,6 @@
                         <p class="card-text" th:text="${error}"></p>
                     </div>
                 </div>
-
-
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
                     </p>

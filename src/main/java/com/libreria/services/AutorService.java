@@ -43,6 +43,17 @@ public class AutorService {
         }
     }
 
+    @Transactional
+    public void eliminar(Long id) throws MyException {
+        Optional<Autor> request = autorRepo.findById(id);
+
+        if (request.isPresent()) {
+            Autor autor = request.get();
+            autorRepo.delete(autor);
+        }
+
+    }
+
     public Autor getOne(Long id) {
         return autorRepo.getReferenceById(id);
     }

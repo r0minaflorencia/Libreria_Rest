@@ -17,7 +17,7 @@ public class EditorialService {
 
     @Transactional
     public void crear(String nombre) throws MyException {
-        
+
         validar(nombre);
 
         Editorial editorial = new Editorial();
@@ -33,7 +33,7 @@ public class EditorialService {
     public void modificar(Long id, String nombre) throws MyException {
 
         validar(nombre);
-        
+
         Optional<Editorial> request = editorialRepo.findById(id);
 
         if (request.isPresent()) {
@@ -44,12 +44,22 @@ public class EditorialService {
         }
     }
 
+    @Transactional
+    public void eliminar(Long id) throws MyException {
+        Optional<Editorial> request = editorialRepo.findById(id);
+
+        if (request.isPresent()) {
+            Editorial editorial = request.get();
+            editorialRepo.delete(editorial);
+        }
+
+    }
+
     public Editorial getOne(Long id) {
         return editorialRepo.getReferenceById(id);
     }
 
     private void validar(String nombre) throws MyException {
-
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MyException("El nombre no puede ser nulo.");

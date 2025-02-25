@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Biblioteca Delta</title>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/list.css">
 </head>
 
@@ -34,15 +34,14 @@
                         Libros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
                     </ul>
                 </li>
+
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
@@ -50,12 +49,10 @@
                         Autores
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
                     </ul>
                 </li>
@@ -66,15 +63,14 @@
                         Editoriales
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -104,41 +100,39 @@
                             <td th:text="${libro.editorial.nombre}"></td>
                             <td>
                                 <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i>
-                                    Modificar </a>
+                                    Modificar
+                                </a>
+
+                                <a th:href="@{/libro/eliminar/__${libro.isbn}__}" class="btn btn-danger"
+                                    onclick="return confirm('¿Estás seguro de que querés eliminar este libro?');">
+                                    Eliminar
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
-
                 <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-
                     <div class="card-body">
-
-                        <h5 class="card-title"> Exito </h5>
-
+                        <h5 class="card-title">Exito</h5>
                         <p class="card-text" th:text="${exito}"></p>
-
                     </div>
-
                 </div>
                 <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
                     <div class="card-body">
-                        <h5 class="card-title"> Error </h5>
+                        <h5 class="card-title">Error</h5>
                         <p class="card-text" th:text="${error}"></p>
                     </div>
-
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
-                        </p>
-                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
+                    </p>
                 </div>
 
             </div>
         </section>
 
     </div>
-
 
     <footer class="text-muted py-5">
         <div class="containerFooter">

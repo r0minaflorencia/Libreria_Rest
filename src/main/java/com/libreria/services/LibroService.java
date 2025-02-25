@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LibroService {
 
-    //inyección de dependencias:
+    // inyección de dependencias:
     @Autowired
     private LibroRepo libroRepo;
     @Autowired
@@ -32,12 +32,12 @@ public class LibroService {
 
         validar(isbn, titulo, ejemplares, idAutor, idEditorial);
 
-        //instancio objetos
+        // instancio objetos
         Libro libro = new Libro();
         Autor autor = autorRepo.findById(idAutor).get();
         Editorial editorial = editorialRepo.findById(idEditorial).get();
 
-        //setteo atributos
+        // setteo atributos
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setEjemplares(ejemplares);
@@ -60,7 +60,8 @@ public class LibroService {
 
         validar(isbn, titulo, ejemplares, idAutor, idEditorial);
 
-        // este objeto Optional me devuelve un true or false dependiendo de si se encontró lo buscado en el repo
+        // este objeto Optional me devuelve un true or false dependiendo de si se
+        // encontró lo buscado en el repo
         Optional<Libro> request = libroRepo.findById(isbn);
         Optional<Autor> requestAutor = autorRepo.findById(idAutor);
         Optional<Editorial> requestEditorial = editorialRepo.findById(idEditorial);
@@ -78,8 +79,9 @@ public class LibroService {
         }
 
         if (request.isPresent()) {
-            Libro libro = request.get(); // le asigno a libro lo que se encontró en la request 
+            Libro libro = request.get(); // le asigno a libro lo que se encontró en la request
 
+            libro.setIsbn(isbn);
             libro.setTitulo(titulo);
             libro.setAutor(autor);
             libro.setEditorial(editorial);
@@ -88,6 +90,19 @@ public class LibroService {
             // persistir:
             libroRepo.save(libro);
         }
+    }
+
+    @Transactional
+    public void eliminar(Long isbn) throws MyException {
+
+        Optional<Libro> request = libroRepo.findById(isbn);
+
+        if (request.isPresent()) {
+            libroRepo.delete(request.get());
+        } else {
+            throw new MyException("Error, no se eliminó correctamente.");
+        }
+
     }
 
     public Libro getOne(Long isbn) {
@@ -110,11 +125,11 @@ public class LibroService {
             throw new MyException("Ejemlares no puede ser nulo.");
         }
 
-        if (idAutor == null) {
+        if (idAutor == null || !autorRepo.existsById(idAutor)) {
             throw new MyException("No se encuentra el autor.");
         }
 
-        if (idEditorial == null) {
+        if (idEditorial == null || !editorialRepo.existsById(idEditorial)) {
             throw new MyException("No se encuentra la editorial.");
         }
     }

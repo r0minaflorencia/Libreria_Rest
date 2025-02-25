@@ -52,6 +52,22 @@ public class AutorController {
         return "autor_list.html";
     }
 
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id, ModelMap modelo) {
+        try {
+
+            service.eliminar(id);
+            modelo.put("exito", "Se eliminó correctamente el autor seleccionado.");
+
+        } catch (Exception ex) {
+
+            modelo.put("error", ex.getMessage());
+            return "autor_list.html";
+        }
+
+        return "index.html";
+    }
+
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("autor", service.getOne(id));

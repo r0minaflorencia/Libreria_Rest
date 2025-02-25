@@ -51,6 +51,22 @@ public class EditorialController {
         return "editorial_list.html";
     }
 
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id, ModelMap modelo) {
+
+        try {
+            service.eliminar(id);
+            modelo.put("exito", "Se eliminó correctamente la editorial.");
+
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+            return "editorial_list.html";
+        }
+
+        return "index.html";
+
+    }
+
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("editorial", service.getOne(id));
@@ -70,6 +86,5 @@ public class EditorialController {
         }
 
     }
-
 
 }

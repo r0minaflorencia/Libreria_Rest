@@ -85,13 +85,25 @@ public class LibroController {
         return "index.html";
     }
 
-
     @GetMapping("/lista")
     public String listar(ModelMap modelo) {
         List<Libro> libros = service.listarTodo();
         modelo.addAttribute("libros", libros);
 
         return "libro_list.html";
+    }
+
+    @GetMapping("eliminar/{id}")
+    public String eliminarLibro(@PathVariable Long isbn, ModelMap modelo) {
+        try {
+            service.eliminar(isbn);
+            modelo.put("exito", "El libro se eliminó correctamente.");
+        } catch (MyException ex) {
+            modelo.put("error", ex.getMessage());
+            return "libro_list.html";
+        }
+
+        return "redirect:../lista"; 
     }
 
     @GetMapping("/modificar/{isbn}")
@@ -108,10 +120,11 @@ public class LibroController {
     }
 
     @PostMapping("/modificar/{isbn}")
-    public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial, ModelMap modelo) {
+    public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial,
+            ModelMap modelo) {
         try {
             service.modificar(isbn, titulo, ejemplares, idAutor, idEditorial);
-
+            modelo.put("exito", "se modificó correctamente");
             return "redirect:../lista";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
