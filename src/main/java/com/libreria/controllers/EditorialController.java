@@ -69,6 +69,7 @@ public class EditorialController {
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
+
         modelo.put("editorial", service.getOne(id));
 
         return "editorial_modificar.html";
@@ -77,6 +78,7 @@ public class EditorialController {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, ModelMap modelo) {
         try {
+            
             service.modificar(id, nombre);
 
             return "redirect:../lista";

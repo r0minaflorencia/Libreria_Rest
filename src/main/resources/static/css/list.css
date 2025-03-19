@@ -1,8 +1,8 @@
-.navBar{
+.navBar {
     background-color: #fff !important;
 }
 
-.elementosNav{
+.elementosNav {
     display: flex;
     width: 30%;
     justify-content: space-around;
@@ -14,49 +14,41 @@
     margin-right: 50px;
 }
 
-.containerImg{
+.containerImg {
     width: 20%;
 }
 
-.logo{
+.logo {
     width: 40%;
     margin: auto;
 }
 
-.contenedor{
+.contenedor {
     /* Foto de Pixabay: https://www.pexels.com/es-es/foto/libros-en-estanteria-de-madera-negra-159711/ */
     background-image: url(../img/background_2.jpg) !important;
     justify-content: center;
 }
 
-.table{
+.table {
     justify-content: center;
 }
 
-.containerFooter{
+.containerFooter {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.boton{
-    background-color: #ffcb00;
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+.fas {
     margin-right: 10px;
     margin-left: -10px;
 }
 
-.botonCargar{
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+.btn {
+    margin-left: 20px;
 }
 
-.boton:active{
-    box-shadow: none;
-}
-.botonCargar:active{
+
+.boton:active {
     box-shadow: none;
 }

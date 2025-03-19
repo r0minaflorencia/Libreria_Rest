@@ -78,11 +78,11 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="contenedor">
 
         <form class="formulario" th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST">
-           
+
             <input hidden th:value="${libro.isbn}" name="isbn">
 
             <div class="form-group my-3">
@@ -92,23 +92,30 @@
             </div>
 
             <div class="form-group my-3">
-                <label class="mb-2" >Ejemplares</label>
+                <label class="mb-2">Ejemplares</label>
                 <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares"
                     placeholder="Cantidad de ejemplares">
             </div>
 
             <div class="form-group my-3">
-                <select name="idAutor">
-                    <option>Seleccionar Autor</option>
-                    <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}" >
+                <select name="idAutor" class="form-control">
+                    
+                    <!-- Iteración sobre la lista de autores -->
+                    <option th:each="autor : ${autores}" 
+                            th:value="${autor.id}" 
+                            th:text="${autor.nombre}" 
+                            th:selected="${autor.id == idAutorSelected}">
+                    </option>
                 </select>
             </div>
 
             <div class="form-group my-3">
-                <select name="idEditorial">
-                    <option>Seleccionar Editorial</option>
-                    <option th:each="editorial : ${editoriales}" th:value="${editorial.id}"
-                        th:text="${editorial.nombre}" >
+                <select name="idEditorial" class="form-control">
+
+                    <option th:each="editorial : ${editoriales}"
+                            th:value="${editorial.id}"
+                            th:text="${editorial.nombre}" 
+                            th:selected="${editorial.id == idEditorialSelected}">
                 </select>
             </div>
 

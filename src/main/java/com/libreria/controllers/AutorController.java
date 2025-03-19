@@ -70,6 +70,7 @@ public class AutorController {
 
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
+
         modelo.put("autor", service.getOne(id));
 
         return "autor_modificar.html";
@@ -78,6 +79,7 @@ public class AutorController {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, ModelMap modelo) {
         try {
+
             service.modificar(id, nombre);
 
             return "redirect:../lista";

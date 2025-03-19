@@ -113,6 +113,9 @@ public class LibroController {
         List<Autor> autores = autorService.listarTodo();
         List<Editorial> editoriales = editorialService.listarTodo();
 
+        modelo.addAttribute("idAutorSelected", service.getOne(isbn).getAutor().getId());
+        modelo.addAttribute("idEditorialSelected", service.getOne(isbn).getEditorial().getId());
+
         modelo.addAttribute("autores", autores);
         modelo.addAttribute("editoriales", editoriales);
 
@@ -123,6 +126,7 @@ public class LibroController {
     public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial,
             ModelMap modelo) {
         try {
+
             service.modificar(isbn, titulo, ejemplares, idAutor, idEditorial);
             modelo.put("exito", "se modificó correctamente");
             return "redirect:../lista";
