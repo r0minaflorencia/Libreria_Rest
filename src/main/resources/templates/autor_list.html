@@ -101,6 +101,11 @@
                             <th scope="row" th:text="${autor.id}"></th>
                             <td th:text="${autor.nombre}"></td>
                             <td>
+
+                                <a th:href="@{/autor/info/__${autor.id}__}" class="btn btn-info">
+                                    Info
+                                </a>
+
                                 <a th:href="@{/autor/modificar/__${autor.id}__}"><i class="fas fa-feather-alt"></i>
                                     Modificar
                                 </a>

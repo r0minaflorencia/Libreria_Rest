@@ -1,5 +1,6 @@
 package com.libreria.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -12,8 +13,15 @@ public class Libro {
 
     @Id
     private Long isbn;
+
+    @Column
     private String titulo;
+
+    @Column
     private Integer ejemplares;
+
+    @Column(length = 700) // Opcional: limita el tamaño de la descripción
+    private String descripcion;
     
     @Temporal(TemporalType.DATE)
     private Date alta;
@@ -27,10 +35,11 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(Long isbn, String titulo, Integer ejemplares, Date alta, Autor autor, Editorial editorial) {
+    public Libro(Long isbn, String titulo, Integer ejemplares, String descripcion, Date alta, Autor autor, Editorial editorial) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.ejemplares = ejemplares;
+        this.descripcion = descripcion;
         this.alta = alta;
         this.autor = autor;
         this.editorial = editorial;
@@ -74,6 +83,14 @@ public class Libro {
 
     public void setEjemplares(Integer ejemplares) {
         this.ejemplares = ejemplares;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Date getAlta() {

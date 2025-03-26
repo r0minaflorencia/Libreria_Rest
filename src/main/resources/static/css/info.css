@@ -1,0 +1,47 @@
+.navBar{
+    background-color: #fff !important;
+}
+
+.elementosNav{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    color: #37474f;
+    font-weight: 700;
+}
+
+.elementos{
+    margin-right: 50px;
+}
+
+.containerImg{
+    width: 20%;
+}
+
+.logo{
+    width: 40%;
+    margin: auto;
+}
+
+.mensajeExito{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.mensajeError{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.img-reducida {
+    max-width: 20%;  /* Ajusta el tamaño de la imagen */
+    height: auto;  /* Mantiene la proporción */
+}
+
+.containerFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

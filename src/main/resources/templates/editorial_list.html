@@ -98,8 +98,13 @@
                             <th scope="row" th:text="${editorial.id}"></th>
                             <td th:text="${editorial.nombre}"></td>
                             <td>
-                                <a th:href="@{/editorial/modificar/__${editorial.id}__}"><i
-                                        class="fas fa-feather-alt"></i> Modificar
+
+                                <a th:href="@{/editorial/info/__${editorial.id}__}" class="btn btn-info">
+                                    Info
+                                </a>
+
+                                <a th:href="@{/editorial/modificar/__${editorial.id}__}"><i class="fas fa-feather-alt"></i>
+                                    Modificar
                                 </a>
                                 <a th:href="@{/editorial/eliminar/__${editorial.id}__}" class="btn btn-danger"
                                     onclick="return confirm('¿Estás seguro de que querés eliminar esta editorial?');">

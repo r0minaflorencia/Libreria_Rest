@@ -99,7 +99,12 @@
                             <td th:text="${libro.autor.nombre}"></td>
                             <td th:text="${libro.editorial.nombre}"></td>
                             <td>
-                                <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt" ></i>
+
+                                <a th:href="@{/libro/info/__${libro.isbn}__}" class="btn btn-info">
+                                    Info
+                                </a>
+
+                                <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i>
                                     Modificar
                                 </a>
 

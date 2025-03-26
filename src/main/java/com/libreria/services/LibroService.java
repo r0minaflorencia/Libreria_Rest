@@ -55,7 +55,8 @@ public class LibroService {
 
     // método para editar Libro:
     @Transactional
-    public void modificar(Long isbn, String titulo, Integer ejemplares, Long idAutor, Long idEditorial)
+    public void modificar(Long isbn, String titulo, Integer ejemplares, String descripcion, Long idAutor,
+            Long idEditorial)
             throws MyException {
 
         validar(isbn, titulo, ejemplares, idAutor, idEditorial);
@@ -86,10 +87,16 @@ public class LibroService {
             libro.setAutor(autor);
             libro.setEditorial(editorial);
             libro.setEjemplares(ejemplares);
+            libro.setDescripcion(descripcion);
 
             // persistir:
             libroRepo.save(libro);
         }
+    }
+
+    @Transactional
+    public void agregarDescripcion(String descripcion) {
+
     }
 
     @Transactional
