@@ -23,11 +23,11 @@
             </a>
         </div>
 
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Título/Autor/Editorial" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="d-flex" role="search" th:action="@{/libro/busqueda}" method="GET">
+            <input class="form-control me-2" type="search" name="busqueda" placeholder="Título/Autor/Editorial" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
         </form>
-
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

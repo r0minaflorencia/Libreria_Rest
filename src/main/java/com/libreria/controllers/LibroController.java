@@ -7,6 +7,7 @@ import com.libreria.exceptions.MyException;
 import com.libreria.services.AutorService;
 import com.libreria.services.EditorialService;
 import com.libreria.services.LibroService;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,6 +92,18 @@ public class LibroController {
         modelo.addAttribute("libros", libros);
 
         return "libro_list.html";
+    }
+
+    @GetMapping("/busqueda")
+    public String buscarLibros(@RequestParam(required = false) String busqueda, ModelMap modelo) {
+
+        List<Libro> libros = service.buscarLibros(busqueda);
+
+        System.out.println("📚 Libros encontrados: " + libros.size());
+
+        modelo.addAttribute("libros", libros);
+
+        return "busqueda.html";
     }
 
     @GetMapping("/info/{isbn}")

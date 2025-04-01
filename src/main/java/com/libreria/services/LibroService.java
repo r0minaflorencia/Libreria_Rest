@@ -116,6 +116,10 @@ public class LibroService {
         return libroRepo.getReferenceById(isbn);
     }
 
+    public List<Libro> buscarLibros(String busqueda) {
+        return libroRepo.buscarPorFiltros(busqueda);
+    }
+
     // método para validar datos:
     private void validar(Long isbn, String titulo, Integer ejemplares,
             Long idAutor, Long idEditorial) throws MyException {
