@@ -1,6 +1,7 @@
 package com.libreria.controllers;
 
 import com.libreria.entities.Editorial;
+import com.libreria.entities.Libro;
 import com.libreria.exceptions.MyException;
 import com.libreria.services.EditorialService;
 
@@ -51,6 +52,15 @@ public class EditorialController {
         return "editorial_list.html";
     }
 
+    @GetMapping("/info/{id}")
+    public String info(@PathVariable Long id, ModelMap modelo) {
+
+        Editorial editorial = service.getOne(id);
+        modelo.addAttribute("editorial", editorial);
+
+        return "editorial_ficha.html";
+    }
+
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
 
@@ -78,7 +88,7 @@ public class EditorialController {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, ModelMap modelo) {
         try {
-            
+
             service.modificar(id, nombre);
 
             return "redirect:../lista";
