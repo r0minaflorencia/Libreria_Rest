@@ -1,6 +1,7 @@
 package com.libreria.controllers;
 
 import com.libreria.entities.Autor;
+import com.libreria.entities.Libro;
 import com.libreria.exceptions.MyException;
 import com.libreria.services.AutorService;
 
@@ -50,6 +51,15 @@ public class AutorController {
         modelo.addAttribute("autores", autores);
 
         return "autor_list.html";
+    }
+
+    @GetMapping("/info/{id}")
+    public String info(@PathVariable Long id , ModelMap modelo) {
+
+        Autor autor = service.getOne(id);
+        modelo.addAttribute("autor", autor);
+
+        return "autor_ficha.html";
     }
 
     @GetMapping("/eliminar/{id}")
