@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 !**/src/main/java/com/libreria/controllers
 !**/src/main/java/com/libreria/repositories
+!**/src/main/java/com/libreria/resources
 
 ### STS ###
 .apt_generated
@@ -27,5 +28,3 @@ build/
 
 ### VS Code ###
 .vscode/
-application.properties
-Dockerfile
