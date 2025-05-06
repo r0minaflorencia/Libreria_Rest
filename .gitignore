@@ -1,20 +1,10 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-!**/src/main/java/com/libreria/controllers
-!**/src/main/java/com/libreria/repositories
-!**/src/main/java/com/libreria/resources
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+target
+src\test
+src\main\java\com\libreria\controllers
+src\main\java\com\libreria\repositories
+src\main\resources
 
 ### NetBeans ###
 /nbproject/private/
@@ -28,3 +18,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
