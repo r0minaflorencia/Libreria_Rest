@@ -1,7 +1,6 @@
 package com.libreria.controllers;
 
 import com.libreria.entities.Autor;
-import com.libreria.entities.Libro;
 import com.libreria.exceptions.MyException;
 import com.libreria.services.AutorService;
 
