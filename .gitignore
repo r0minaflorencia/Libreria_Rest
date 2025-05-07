@@ -2,8 +2,6 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 target
 src\test
-src\main\java\com\libreria\controllers
-src\main\java\com\libreria\repositories
 src\main\resources
 
 ### STS ###
