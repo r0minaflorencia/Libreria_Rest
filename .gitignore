@@ -29,6 +29,7 @@ target/
 .classpath
 .project
 .settings/
+.devcontainer.env
 
 # Ignorar archivos de dependencias
 *.log
