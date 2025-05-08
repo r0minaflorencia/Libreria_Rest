@@ -30,8 +30,8 @@ target/
 .project
 .settings/
 
-# Ignorar enviroment
-.env
+# Ignorar propiedades
+application.properties
 
 # Ignorar archivos de dependencias
 *.log
