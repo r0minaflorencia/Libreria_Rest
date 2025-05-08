@@ -29,7 +29,9 @@ target/
 .classpath
 .project
 .settings/
-.devcontainer.env
+
+# Ignorar enviroment
+.env
 
 # Ignorar archivos de dependencias
 *.log
