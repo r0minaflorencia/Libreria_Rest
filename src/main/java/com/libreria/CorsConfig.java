@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // permite todas las rutas
-                        .allowedOrigins("https://mi-app.vercel.app", "http://localhost:3000") // frontend permitido
+                        .allowedOrigins("deltabooks.up.railway.app", "http://localhost:3000") // frontend permitido
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true); // si usás cookies o auth
