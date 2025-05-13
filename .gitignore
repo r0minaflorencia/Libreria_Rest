@@ -2,7 +2,6 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 target
 src\test
-src\main\resources
 
 ### STS ###
 .apt_generated
@@ -32,7 +31,6 @@ target/
 
 # Ignorar propiedades
 .env
-application.properties
 
 # Ignorar archivos de dependencias
 *.log
