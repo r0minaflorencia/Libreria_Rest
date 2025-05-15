@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:21-jre
 ARG JAR_FILE=target/Libreria-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} Libreria-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
