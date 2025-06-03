@@ -10,6 +10,7 @@ import com.libreria.services.LibroService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class LibroController {
     private EditorialService editorialService;
 
     @GetMapping("/registrar")
+    @PreAuthorize("hasRole('ADMIN')")
     public String registrar(ModelMap model) {
 
         List<Autor> autores = autorService.listarTodo();
@@ -61,6 +63,7 @@ public class LibroController {
      * @return index is returned if satisfactory
      */
     @PostMapping("/registro")
+    @PreAuthorize("hasRole('ADMIN')")
     public String registro(@RequestParam(required = false) Long isbn, @RequestParam String titulo,
             @RequestParam(required = false) Integer ejemplares, @RequestParam(required = false) Long idAutor,
             @RequestParam(required = false) Long idEditorial, ModelMap model) {
@@ -99,8 +102,6 @@ public class LibroController {
 
         List<Libro> libros = service.buscarLibros(busqueda);
 
-        System.out.println("📚 Libros encontrados: " + libros.size());
-
         modelo.addAttribute("libros", libros);
 
         return "busqueda.html";
@@ -116,6 +117,7 @@ public class LibroController {
     }
 
     @GetMapping("/eliminar/{isbn}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String eliminarLibro(@PathVariable Long isbn, ModelMap modelo) {
         try {
             service.eliminar(isbn);
@@ -129,6 +131,7 @@ public class LibroController {
     }
 
     @GetMapping("/modificar/{isbn}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String modificar(@PathVariable Long isbn, ModelMap modelo) {
         modelo.put("libro", service.getOne(isbn));
 
@@ -145,6 +148,7 @@ public class LibroController {
     }
 
     @PostMapping("/modificar/{isbn}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String modificar(@PathVariable Long isbn, String titulo, Integer ejemplares, String descripcion,
             Long idAutor, Long idEditorial,
             ModelMap modelo) {

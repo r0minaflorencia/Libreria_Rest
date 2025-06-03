@@ -1,81 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <title>Biblioteca</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navBar">
-        <div class="containerImg">
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <img class="logo" src="/img/world-book.png" alt="Img logo delta">
-            </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto elementos">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Libros
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Autores
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Editoriales
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+    <div th:insert="~{fragments/navBar :: navbar}"></div>
+    
     <div class="contenedor">
 
         <form class="formulario" th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
@@ -114,22 +54,11 @@
         </section>
     </div>
 
-    <footer class="text-muted py-5">
-        <div class="containerFooter">
-            <p class="mb-1">&copy; 2025 | Hecho con 💙, código y un toque de creatividad.</p>
-            <p class="mb-0"> Si querés ver el proyecto <br> Visitá el repositorio </a> en GitHub <a
-                    href="https://github.com/r0minaflorencia/Libreria_Rest" target="_blank"> Click acá </a>.</p>
-            <p class="float-end mb-1">
-                <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-            </p>
-        </div>
-    </footer>
+    <div th:insert="~{fragments/footer :: footer}"></div>
 
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

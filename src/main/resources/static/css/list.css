@@ -1,17 +1,19 @@
 .navBar {
     background-color: #fff !important;
+    padding: 0 20px;
 }
 
 .elementosNav {
     display: flex;
-    width: 30%;
+    flex-wrap: wrap;
     justify-content: space-around;
     color: #37474f;
     font-weight: 700;
+    width: auto;
 }
 
 .elementos {
-    margin-right: 50px;
+    margin-right: 0;
 }
 
 .containerImg {
@@ -50,4 +52,27 @@
 
 .boton:active {
     box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .elementosNav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .panel-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .formulario {
+        width: 90%;
+    }
 }

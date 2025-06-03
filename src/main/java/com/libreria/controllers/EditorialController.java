@@ -7,6 +7,7 @@ import com.libreria.services.EditorialService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +24,13 @@ public class EditorialController {
     private EditorialService service;
 
     @GetMapping("/registrar")
+    @PreAuthorize("hasRole('ADMIN')")
     public String registrar() {
         return "editorial_form.html";
     }
 
     @PostMapping("/registro")
+    @PreAuthorize("hasRole('ADMIN')")
     public String registro(@RequestParam String nombre, ModelMap model) {
 
         try {
@@ -42,6 +45,7 @@ public class EditorialController {
     }
 
     @GetMapping("/lista")
+    @PreAuthorize("permitAll()")
     public String listar(ModelMap modelo) {
 
         List<Editorial> editoriales = service.listarTodo();
@@ -52,6 +56,7 @@ public class EditorialController {
     }
 
     @GetMapping("/info/{id}")
+    @PreAuthorize("permitAll()")
     public String info(@PathVariable Long id, ModelMap modelo) {
 
         Editorial editorial = service.getOne(id);
@@ -61,6 +66,7 @@ public class EditorialController {
     }
 
     @GetMapping("/eliminar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String eliminar(@PathVariable Long id, ModelMap modelo) {
 
         try {
@@ -77,6 +83,7 @@ public class EditorialController {
     }
 
     @GetMapping("/modificar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String modificar(@PathVariable Long id, ModelMap modelo) {
 
         modelo.put("editorial", service.getOne(id));
@@ -85,6 +92,7 @@ public class EditorialController {
     }
 
     @PostMapping("/modificar/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String modificar(@PathVariable Long id, String nombre, ModelMap modelo) {
         try {
 

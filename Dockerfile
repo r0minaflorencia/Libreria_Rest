@@ -11,4 +11,3 @@ WORKDIR /libreria
 COPY --from=build /libreria/target/*.jar Libreria-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "Libreria-0.0.1-SNAPSHOT.jar"]
-

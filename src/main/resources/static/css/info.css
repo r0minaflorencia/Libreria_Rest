@@ -1,47 +1,74 @@
-.navBar{
+.navBar {
     background-color: #fff !important;
+    padding: 0 20px;
 }
 
-.elementosNav{
+.elementosNav {
     display: flex;
-    width: 30%;
+    flex-wrap: wrap;
     justify-content: space-around;
     color: #37474f;
     font-weight: 700;
+    width: auto;
 }
 
-.elementos{
-    margin-right: 50px;
+.elementos {
+    margin-right: 0;
 }
 
-.containerImg{
+.containerImg {
     width: 20%;
 }
 
-.logo{
+.logo {
     width: 40%;
     margin: auto;
 }
 
-.mensajeExito{
+.mensajeExito {
     width: 20%;
     margin: auto;
     text-align: center;
 }
 
-.mensajeError{
+.mensajeError {
     width: 20%;
     margin: auto;
     text-align: center;
 }
 
 .img-reducida {
-    max-width: 20%;  /* Ajusta el tamaño de la imagen */
-    height: auto;  /* Mantiene la proporción */
+    max-width: 20%;
+    /* Ajusta el tamaño de la imagen */
+    height: auto;
+    /* Mantiene la proporción */
 }
 
-.containerFooter{
+.containerFooter {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .elementosNav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .panel-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .formulario {
+        width: 90%;
+    }
 }
