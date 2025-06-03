@@ -20,7 +20,7 @@ public class JwtService {
     @Value("${security.jwt.expiration-minutes}")
     private Long EXPIRATION_MINUTES;
 
-    @Value("${security.jwt.secret_key}")
+    @Value("${security.jwt.secret-key}")
     private String SECRET_KEY;
 
     public String generarToken(Usuario usuario, Map<String, Object> extraClaims) {
