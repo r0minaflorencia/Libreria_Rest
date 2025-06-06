@@ -73,7 +73,7 @@ public class EditorialController {
             service.eliminar(id);
             modelo.put("exito", "Se eliminó correctamente la editorial.");
 
-        } catch (Exception ex) {
+        } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
             return "editorial_list.html";
         }
