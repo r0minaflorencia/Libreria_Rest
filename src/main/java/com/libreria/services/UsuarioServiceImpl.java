@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,8 +27,9 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
-
+    
     @Autowired
+    @Lazy // Esto evita la dependencia circular
     private PasswordEncoder passwordEncoder;
 
     @Value("${app.admin.secret-code}")
@@ -124,7 +126,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
         if (optionalUsuario.isPresent() && codigo.equals(ADMIN_CODE)) {
             Usuario usuario = optionalUsuario.get();
-            usuario.setRol(RolEnum.ADMIN); 
+            usuario.setRol(RolEnum.ADMIN);
             usuarioRepo.save(usuario);
         } else {
             throw new EntityNotFoundException("Usuario: " + email + " no encontrado.");
