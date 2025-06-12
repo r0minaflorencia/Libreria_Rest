@@ -23,7 +23,7 @@ import com.libreria.services.UsuarioServiceImpl;
 public class SecurityConfig {
 
         @Autowired
-        private UsuarioServiceImpl usuarioService; // o tu UserDetailsService
+        private UsuarioServiceImpl usuarioService; 
 
         @Bean
         public AuthenticationManager authenticationManager(
