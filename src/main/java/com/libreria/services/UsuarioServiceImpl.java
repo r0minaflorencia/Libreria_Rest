@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
-    
+
     @Autowired
     @Lazy // Esto evita la dependencia circular
     private PasswordEncoder passwordEncoder;
@@ -270,7 +270,8 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
     @Override
     public Usuario buscarPorEmail(String email) {
-        return usuarioRepo.buscarPorEmail(email);
+        return usuarioRepo.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + email));
     }
 
 }
