@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import com.libreria.DTOs.RespuestaAutenticacion;
 public class AutenticacionService {
 
     @Autowired
+    @Lazy
     private AuthenticationManager authenticationManager;
 
     @Autowired
