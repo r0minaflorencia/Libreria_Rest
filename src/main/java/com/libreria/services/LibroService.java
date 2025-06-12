@@ -27,7 +27,7 @@ public class LibroService {
 
     // método para crear libro con atributos básicos:
     @Transactional
-    public void crear(Long isbn, String titulo, Integer ejemplares,
+    public void crear(Long isbn, String titulo, String descripcion, Integer ejemplares,
             Long idAutor, Long idEditorial) throws MyException {
 
         validar(isbn, titulo, ejemplares, idAutor, idEditorial);
@@ -40,6 +40,7 @@ public class LibroService {
         // setteo atributos
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
+        libro.setDescripcion(descripcion);
         libro.setEjemplares(ejemplares);
         libro.setAlta(new Date());
         libro.setAutor(autor);

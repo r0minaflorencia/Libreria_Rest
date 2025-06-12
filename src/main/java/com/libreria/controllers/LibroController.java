@@ -65,12 +65,12 @@ public class LibroController {
     @PostMapping("/registro")
     @PreAuthorize("hasRole('ADMIN')")
     public String registro(@RequestParam(required = false) Long isbn, @RequestParam String titulo,
-            @RequestParam(required = false) Integer ejemplares, @RequestParam(required = false) Long idAutor,
+            @RequestParam String descripcion, @RequestParam(required = false) Integer ejemplares, @RequestParam(required = false) Long idAutor,
             @RequestParam(required = false) Long idEditorial, ModelMap model) {
 
         try {
 
-            service.crear(isbn, titulo, ejemplares, idAutor, idEditorial);
+            service.crear(isbn, titulo, descripcion, ejemplares, idAutor, idEditorial);
             model.put("exito", "Se registró correctamente.");
 
         } catch (MyException ex) {
